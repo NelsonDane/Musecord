@@ -1,0 +1,3 @@
+pydrive
+discord.py
+python-dotenv

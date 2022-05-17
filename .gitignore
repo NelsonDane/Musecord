@@ -1,0 +1,4 @@
+.env
+client_secrets.json
+mycreds.txt
+.DS_Store
