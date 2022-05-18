@@ -34,6 +34,7 @@ else:
 # Save the current credentials to a file
 gauth.SaveCredentialsFile("mycreds.txt")
 drive = GoogleDrive(gauth)
+print('Logged into Google Drive')
 
 # Load .env
 load_dotenv()
@@ -42,6 +43,7 @@ GFOLDER = os.getenv('DRIVE_FOLDER')
 
 # Bot prefix
 bot = commands.Bot(command_prefix='!')
+print('Musecord bot is started...')
 
 # Bot ping-pong
 @bot.command(name='ping')
@@ -96,6 +98,7 @@ async def pdf(ctx,URL,TYPE):
                 # Final message
                 response = 'Moved file to saves!'
                 await ctx.send(response)
+                print('Process complete!')
             
         else:
             response = 'Request failed. Sadge.'
