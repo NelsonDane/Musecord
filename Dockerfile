@@ -21,7 +21,6 @@ ADD ./client_secrets.json .
 ADD ./requirements.txt .
 
 # Make directories
-RUN mkdir ./saves/
 RUN mkdir ./temp/
 
 # Install dependencies
