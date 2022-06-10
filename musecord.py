@@ -8,9 +8,7 @@ import discord
 from dotenv import load_dotenv
 from discord.ext import commands
 
-# Add exceptions later for incorrectly typed commands
-URL = 'blank'
-TYPE = 'blank'
+# Path to save files
 temp_path = "./temp/"
 
 # Load .env
