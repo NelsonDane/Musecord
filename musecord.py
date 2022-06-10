@@ -1,7 +1,8 @@
 # By Nelson Dane
-# Discord bot to download PDFs, mp3's, and MIDI's from musescore and send in discord chat
+# Discord bot to download PDFs, mp3's, and MIDI's
 
 import os
+import sys
 import subprocess
 import glob
 import validators
@@ -19,6 +20,10 @@ if not os.environ["DISCORD_TOKEN"]:
 
 # Get the bot's token from the .env
 TOKEN = os.getenv('DISCORD_TOKEN')
+# If token is empty, then exit
+if not TOKEN:
+    print('Please set the DISCORD_TOKEN environment variable.')
+    sys.exit(1)
 
 # Path to save files
 save_path = "./downloads/"
@@ -36,7 +41,7 @@ async def ping(ctx):
 # Massive command for file downloads
 @bot.command(name='musecord')
 async def pdf(ctx,URL,TYPE):
-    
+
         # Valide user input
         if not validators.url(URL):
             print('Invalid URL')
@@ -54,7 +59,7 @@ async def pdf(ctx,URL,TYPE):
             # Count downloaded files before
             before = (len([entry for entry in os.listdir(save_path) if os.path.isfile(os.path.join(save_path, entry))]))
             # Download file with external script since idk how else to do it
-            subprocess.check_call(['./LibreScore.sh %s %s %s' % (URL, TYPE, save_path)],shell=True)        
+            subprocess.check_call(['./LibreScore.sh %s %s %s' % (URL, TYPE, save_path)], shell=True)        
             # Count downloaded files after to see if anything was downloaded
             after = (len([entry for entry in os.listdir(save_path) if os.path.isfile(os.path.join(save_path, entry))]))
 
@@ -63,7 +68,7 @@ async def pdf(ctx,URL,TYPE):
                 response = 'Request Succeeded!'
                 await ctx.send(response)
 
-                # Search files with .pdf,, mp3, .mid, or .midi extension in source directory
+                # Search files with wanted extensions in source directory
                 pattern = "/*.pdf"
                 pattern2 = "/*.mp3"
                 pattern3 = "/*.mid"
