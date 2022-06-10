@@ -5,11 +5,8 @@
 
 import os
 import subprocess
-#import shutil
 import glob
 import discord
-#from pydrive.auth import GoogleAuth
-#from pydrive.drive import GoogleDrive
 from dotenv import load_dotenv
 from discord.ext import commands
 
@@ -17,28 +14,8 @@ from discord.ext import commands
 URL = 'blank'
 TYPE = 'blank'
 temp_path = "./temp/"
-#SAVE_PATH = './saves/'
 
 # # GOOGLE AUTH
-# gauth = GoogleAuth()
-# # Try to load saved client credentials
-# gauth.LoadCredentialsFile("mycreds.txt")
-# if gauth.credentials is None:
-#     # Authenticate if they're not there
-#     gauth.GetFlow()
-#     gauth.flow.params.update({'access_type': 'offline'})
-#     gauth.flow.params.update({'approval_prompt': 'force'})
-#     gauth.LocalWebserverAuth()
-# elif gauth.access_token_expired:
-#     # Refresh them if expired
-#     gauth.Refresh()
-# else:
-#     # Initialize the saved creds
-#     gauth.Authorize()
-# # Save the current credentials to a file
-# gauth.SaveCredentialsFile("mycreds.txt")
-# drive = GoogleDrive(gauth)
-# print('Logged into Google Drive')
 
 # Load .env
 load_dotenv()
@@ -78,9 +55,6 @@ async def pdf(ctx,URL,TYPE):
 
             for file in files:
                 # # Remove temp_path prefix and set parent folder
-                # gfile = drive.CreateFile({'title': str(file.replace(temp_path,'')),'parents': [{'id': GFOLDER}]})
-                # gfile.SetContentFile(file)
-                # gfile.Upload() # Upload the file.
 
                 # # Print confirmation and send discord message
                 # print('Uploaded files!')
@@ -92,9 +66,6 @@ async def pdf(ctx,URL,TYPE):
                 print('Sent file in Discord!')
 
                 # # extract file name form file path
-                # file_name = os.path.basename(file)
-                # #shutil.move(file, destination_folder + file_name)
-                # print('Moved:', file)
 
                 # # Final message
                 # response = 'Moved file to saves!'
