@@ -18,7 +18,7 @@ ADD ./LibreScore.sh .
 ADD ./requirements.txt .
 
 # Make directories
-RUN mkdir ./temp/
+RUN mkdir ./downloads/
 
 # Install dependencies
 RUN pip install -r requirements.txt
