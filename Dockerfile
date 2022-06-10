@@ -5,7 +5,6 @@ FROM node:18
 
 # Env variables
 ENV DISCORD_TOKEN = ''
-ENV DRIVE_FOLDER = ''
 
 # Install python and pip
 RUN apt-get update && apt-get install -y \
@@ -16,8 +15,6 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 ADD ./musecord.py .
 ADD ./LibreScore.sh .
-ADD ./mycreds.txt .
-ADD ./client_secrets.json .
 ADD ./requirements.txt .
 
 # Make directories
