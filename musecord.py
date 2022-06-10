@@ -49,7 +49,7 @@ async def pdf(ctx,URL,TYPE):
         elif "musescore.com" not in URL:
             print('Invalid musescore URL. Please use a url from musescore.com')
             await ctx.send('Invalid musescore URL. Please use a url from musescore.com')
-        elif TYPE not in ['pdf','mp3','midi']:
+        elif TYPE.lower() not in ['pdf','mp3','midi']:
             print('Invalid file type. Please use pdf, mp3, or midi')
             await ctx.send('Invalid file type. Please use pdf, mp3, or midi')
         else:
@@ -59,7 +59,7 @@ async def pdf(ctx,URL,TYPE):
             # Count downloaded files before
             before = (len([entry for entry in os.listdir(save_path) if os.path.isfile(os.path.join(save_path, entry))]))
             # Download file with external script since idk how else to do it
-            subprocess.check_call(['./LibreScore.sh %s %s %s' % (URL, TYPE, save_path)], shell=True)        
+            subprocess.check_call(['./LibreScore.sh %s %s %s' % (URL, TYPE.lower(), save_path)], shell=True)        
             # Count downloaded files after to see if anything was downloaded
             after = (len([entry for entry in os.listdir(save_path) if os.path.isfile(os.path.join(save_path, entry))]))
 
