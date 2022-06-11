@@ -16,14 +16,10 @@ load_dotenv()
 # Exit if no token is found
 if not os.environ["DISCORD_TOKEN"]:
     print('Please set the DISCORD_TOKEN environment variable.')
-    exit(1)
+    sys.exit(1)
 
 # Get the bot's token from the .env
 TOKEN = os.getenv('DISCORD_TOKEN')
-# If token is empty, then exit
-if not TOKEN:
-    print('Please set the DISCORD_TOKEN environment variable.')
-    sys.exit(1)
 
 # Path to save files
 save_path = "./downloads/"
