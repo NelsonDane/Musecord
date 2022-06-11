@@ -3,15 +3,11 @@
 # Build from node since python doesn't include pip so we have to install python anyways
 FROM node:18-alpine
 
-# Install python and pip
+# Install python, pip, and bash
 RUN apk update && apk add \
     py3-pip \
+    bash \
 && rm -rf /var/cache/apk/*
-
-# RUN apt-get update && apt-get install -y --no-install-recommends \
-#     python3-pip \
-# && apt-get clean \
-# && rm -rf /var/lib/apt/lists/*
 
 # Grab needed files
 WORKDIR /app
