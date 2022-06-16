@@ -4,10 +4,7 @@
 FROM node:18-alpine
 
 # Install python, pip, and bash
-RUN apk update && apk add \
-    py3-pip \
-    bash \
-&& rm -rf /var/cache/apk/*
+RUN apk add --no-cache py3-pip bash
 
 # Grab needed files
 WORKDIR /app
