@@ -1,29 +1,17 @@
 name: Update Docker Hub Description
-
 on:
-  workflow_call:
-    inputs:
-      dockerhub_repo_name:
-        required: true
-        type: string
-    secrets:
-      DOCKERHUB_USERNAME:
-        required: true
-      DOCKERHUB_PASSWORD:
-        required: true
+  push:
+    branches:
+      - main
+    paths:
+      - README.md
+      - .github/workflows/dockerhub-description.yml
 
 jobs:
-  dockerHubDescription:
-    runs-on: ubuntu-latest
-    steps:
-    - 
-      name: Checkout
-      uses: actions/checkout@v3
-    - 
-      name: Docker Hub Description
-      uses: peter-evans/dockerhub-description@v3.1.0
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_PASSWORD }}
-        repository: ${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.dockerhub_repo_name }}
-        short-description: ${{ github.event.repository.description }}
+  call-dockerhub-action:
+    uses: NelsonDane/DockerHub-Actions/.github/workflows/dockerhub-description.yml@main
+    with:
+      dockerhub_repo_name: musecord
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
