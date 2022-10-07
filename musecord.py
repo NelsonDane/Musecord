@@ -25,7 +25,7 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 save_path = "./downloads/"
 
 # Bot command prefix
-intents=discord.Intents.default()
+intents=discord.Intents.all()
 bot = commands.Bot(command_prefix='!', intents=intents)
 print('Musecord bot is started...')
 
