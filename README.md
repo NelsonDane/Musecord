@@ -1,5 +1,4 @@
 # Musecord
-## Currently Broken (Sadge)
 A discord bot to download music PDFs, MP3's, and MIDI's from musescore.com
 
 Made possible using the Command-line tool of [dl-librescore](https://github.com/LibreScore/dl-librescore). Go give them a ⭐
@@ -7,8 +6,8 @@ Made possible using the Command-line tool of [dl-librescore](https://github.com/
 ## Installation
 ### Docker
 View on [Docker Hub](https://hub.docker.com/r/nelsondane/musecord)
-1. Just run `docker run -e DISCORD_TOKEN="YourBotToken" -it --restart unless-stopped --name musecord nelsondane/musecord`, inserting your discord bot token.
-2. The bot should send a starting message. Upon receiving this, just enter CTRL-p then CTRL-q to exit gracefully, letting the bot run in the background
+1. Just run `docker run -e DISCORD_TOKEN="YourBotToken" -itd --restart unless-stopped --name musecord nelsondane/musecord`, inserting your discord bot token.
+2. The bot is now running. You can view the logs with `docker logs musecord` to ensure it's working.
 
 ### Python Script
 Make sure python3-pip is installed
