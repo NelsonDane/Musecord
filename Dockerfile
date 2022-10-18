@@ -4,7 +4,10 @@
 FROM node:18-alpine
 
 # Install python, pip, and bash
-RUN apk add --no-cache py3-pip bash
+RUN apk add --no-cache \
+    py3-pip \
+    bash \
+&& rm -rf /var/lib/apt/lists/*
 
 # Grab needed files
 WORKDIR /app
